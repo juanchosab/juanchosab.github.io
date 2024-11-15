@@ -1,0 +1,360 @@
+:root {
+    --leter-height: 51px; 
+    --leter-width: calc((100% / 12) - 10px); 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    height: 80vh; /* Ocupa el 80% de la altura de la página */
+}
+#container-jugadores {
+    display: flex;
+
+}
+
+#roulette-panel {
+    flex: 4; /* Ocupa el 80% del ancho */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; /* Alinea las letras al inicio */
+    border: 1px solid #ccc;
+    margin: 20px;
+}
+
+#alphabet-panel {
+    flex: 1; /* Ocupa el 20% del ancho */
+    display: flex;
+    flex-wrap: wrap; /* Permite que las letras se envuelvan en filas */
+    justify-content: center; /* Centra las letras en el panel */
+    /*border: 1px solid #ccc;*/
+    margin: 20px;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 40px;
+    background-color:#f7f06c;
+    border-radius: 15px;
+    padding: 5px 250px;
+}
+
+.letter {
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 19px;
+    width: var(--leter-width); /* Ancho fijo para las letras */
+    
+}
+
+.bloqueada {
+    background-color: #969696;
+    color: #666;
+    cursor: not-allowed;
+    height: var(--leter-height);
+}
+.letra.bloqueada {
+    background-color: #ecebeb;
+    color: #666;
+    cursor: not-allowed;
+    height: var(--leter-height);
+}
+
+.azul {
+    background-color: #007bff;
+    color: white;
+    height: var(--leter-height);
+    font-size: 40px;
+}
+.letra-panel {
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 20px;
+    width: var(--leter-width); /* Ancho fijo para las letras */
+    height: var(--leter-height); /* Altura fija para las letras */
+    line-height: 50px; /* Centrar el texto verticalmente */
+}
+
+.letra-alphabet {
+    display: flex; /* Usar flex para centrar el texto */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 19px;
+    min-width: 50px;
+    width: calc((100% / 2) - 10px);
+    height: 45px;
+    line-height: var(--leter-width); /* Centrar el texto verticalmente */
+}
+
+.pulsada {
+    border: 2px solid #007bff; /* Resaltar el borde de las letras pulsadas */
+}
+
+.player-score.active {
+    font-weight: bold;
+    color: #007bff; /* Color para el jugador activo */
+}
+#scoreboard{
+    flex: 3; /* Ocupa el 20% del ancho */
+    display: flex;
+    flex-wrap: wrap; /* Permite que las letras se envuelvan en filas */
+    justify-content: center; /* Centra las letras en el panel */
+    
+}
+
+.player-score {
+    display: inline-block;
+    margin: 15px;
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+}
+#scoreboard {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    justify-content: space-around; /* Espacio entre los elementos */
+    margin:  15px 15px 0px 15px ; /* Margen alrededor del marcador */
+    padding: 10px; /* Espaciado interno */
+    background-color: #f8f9fa; /* Color de fondo claro */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+.player-score {
+    text-align: center; /* Centrar el texto */
+    padding: 15px; /* Espaciado interno */
+    border: 1px solid #007bff; /* Borde azul para cada jugador */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #ffffff; /* Fondo blanco para cada marcador */
+    width: 100px; /* Ancho fijo para los marcadores */
+    transition: transform 0.2s; /* Transición suave para efectos */
+}
+
+.player-score.active {
+    background-color: #007bff; /* Fondo azul para el jugador activo */
+    color: white; /* Texto blanco para el jugador activo */
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño */
+}
+
+#toggle-upload {
+    margin-left: 10px; /* Espacio entre el título y el símbolo */
+    font-size: 24px; /* Tamaño del símbolo */
+    vertical-align: middle; /* Alinear verticalmente con el texto */
+}
+
+
+
+#opciones {
+    display: flex; /* Usar flexbox */
+    flex-direction: row; /* Colocar los elementos en columna */
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+    flex: 1; /* Ocupa el espacio disponible */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 15px ; /* Espaciado interno */
+    background-color: #f8f9fa; /* Color de fondo claro */
+    width: 200px; /* Ancho fijo para el cuadro */
+    margin: auto; /* Centrar el cuadro en la página */
+    margin-top: 15px;
+}
+
+#opciones label {
+    margin-bottom: 10px; /* Espacio entre el label y el input */
+}
+
+#resultado-ruleta {
+    display:flex;
+    width: 120px;
+    height: 75px;
+    margin:auto;
+    padding: 5px; /* Espaciado interno del input */
+    border: 1px solid #007bff; /* Borde azul para el input */
+    border-radius: 5px; /* Bordes redondeados para el input */
+    font-size: 30px;
+    text-align: center;
+}
+#resultados-ruleta-div{
+    flex: 3;
+}
+#botones {
+    display: flex; /* Usar flexbox para los botones */
+    flex-direction: column; /* Colocar los botones en columna */
+    margin-top: 10px; /* Espacio entre el input y los botones */
+    flex:2;
+}
+
+#botones button {
+    margin-bottom: 5px; /* Espacio entre los botones */
+    padding: 5px 10px; /* Espaciado interno de los botones */
+    border: 1px solid #007bff; /* Borde azul para los botones */
+    border-radius: 5px; /* Bordes redondeados para los botones */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+#botones button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+
+
+#scoreboard button {
+    margin-bottom: 5px; /* Espacio entre los botones */
+    padding: 5px 10px; /* Espaciado interno de los botones */
+    border: 1px solid #007bff; /* Borde azul para los botones */
+    border-radius: 5px; /* Bordes redondeados para los botones */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+#scoreboard select {
+    margin-bottom: 5px; /* Espacio entre los botones */
+    padding: 5px 50px; /* Espaciado interno de los botones */
+    border: 1px solid #007bff; /* Borde azul para los botones */
+    border-radius: 5px; /* Bordes redondeados para los botones */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+#scoreboard button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+
+#resultados-ruleta-div {
+    flex: 3;
+}
+
+#resultado-ruleta {
+    width: 120px;
+    height: 75px;
+    margin: auto;
+    padding: 5px; /* Espaciado interno del input */
+    border: 1px solid #007bff; /* Borde azul para el input */
+    border-radius: 5px; /* Bordes redondeados para el input */
+    font-size: 30px;
+    text-align: center;
+}
+
+#operaciones-container {
+    display: flex;
+    flex-direction: column; /* Organiza los botones en vertical */
+    margin-right: 10px; /* Espacio entre el input y los botones */
+    margin-top: 10px; /* Espacio entre el input y los botones */
+}
+
+#operaciones-container button {
+    margin-bottom: 5px; /* Espacio entre los botones */
+    padding: 5px 10px; /* Espaciado interno de los botones */
+    border: 1px solid #007bff; /* Borde azul para los botones */
+    border-radius: 5px; /* Bordes redondeados para los botones */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+#operaciones-container button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+.error {
+    border: 2px solid red; /* Borde rojo para indicar error */
+    background-color: #ffe6e6; /* Fondo claro para resaltar */
+}
+
+.vibrar {
+    animation: vibrar 3s;
+}
+
+@keyframes vibrar {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-2px);
+    }
+    40% {
+        transform: translateX(2px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+h4{
+    margin: 5px 15px 10px 15px;
+
+}
+h1{
+    color:  #007bff;
+    font-style: bold;
+}
+.letters-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12 columnas */
+    margin: auto;
+    gap: 10px; /* Espacio entre las letras */
+}
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 10px; /* Espacio entre las letras */
+}
+
+.letter {
+    display: flex; /* Usar flex para centrar el texto */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 19px;
+    min-width: 50px;
+    min-height: 50px;
+    width: calc((100% / 2) - 10px);
+    height: calc((100% / 2) - 10px);
+    line-height: var(--leter-width); /* Centrar el texto verticalmente */
+}
+
+.bloqueada {
+    background-color: #969696;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.azul {
+    background-color: #007bff;
+    color: white;
+    font-size: 40px;
+}

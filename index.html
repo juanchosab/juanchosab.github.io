@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de la Fortuna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Ruleta de la Fortuna
+        <span id="toggle-upload" style="cursor: pointer;">↓</span>
+    </h1>
+    <div id="upload-container">
+        <div id="upload-buttons" style="display: none;">
+            <input type="text" id="nombre-jugador1" placeholder="Jugador 1"/>
+            <input type="text" id="nombre-jugador2" placeholder="Jugador 2"/>
+            <input type="text" id="nombre-jugador3" placeholder="Jugador 3"/>
+            <input type="file" id="file-input" />
+            <button id="load-btn">Cargar Archivo</button>
+            
+        </div>
+    </div>
+    
+    <div id="container">
+        <div id="roulette-panel"></div>
+        <div id="alphabet-panel"></div>
+        
+    </div>
+    <div id="container-jugadores">
+        <div id="scoreboard">
+            <div class="player-score" id="player-1">Jugador 1<br><hr> <span id="score-0">0</span></div>
+            <div class="player-score" id="player-2">Jugador 2<br><hr> <span id="score-1">0</span></div>
+            <div class="player-score" id="player-3">Jugador 3<br><hr> <span id="score-2">0</span></div>
+            
+            <div>
+                <button id="me-lo-quedo-btn">Me lo quedo</button>
+                <button id="se-lo-doy-btn">Se lo doy</button>
+                <select id="player-select" style="display: none;"></select>
+            </div>
+        </div>
+        <div id="opciones">
+            <div id="resultados-ruleta-div">
+                <label for="resultado-ruleta"><h4>RESULTADO RULETA</h4></label>
+                <div style="display: flex; align-items: center;">
+                    <input type="number" id="resultado-ruleta" step="25" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+
+                </div>
+            </div>
+            <div id="operaciones-container">
+                <button onclick="sumar()">+</button>
+                <button onclick="restar()">-</button>
+                <button onclick="dividir()">1/2</button>
+                <button onclick="multiplicar()">x2</button>
+            </div>
+            <div id="botones">
+                <button id="quiebra-btn">Quiebra</button>
+                <button id="pierde-turno-btn">Pierde Turno</button>
+                <button id="revelar-panel-btn">Revelar Panel</button>
+                <button id="todas-vocales-btn">Todas las vocales</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
