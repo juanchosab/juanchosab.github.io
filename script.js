@@ -288,7 +288,7 @@ function LimpiarResultado(){
 }
 
 function RevelarPanel(){
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Alfabeto en mayúsculas
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜ'; // Alfabeto en mayúsculas
 
     // Agregar cada letra al Set
     for (let letter of alphabet) {
