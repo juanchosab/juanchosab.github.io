@@ -28,6 +28,7 @@ let selectedLetters = new Set(); // Letras seleccionadas por los jugadores
 let revealedLetters = new Set(); // Letras reveladas en el panel
 let scores = [0, 0, 0]; // Puntuaciones de los 3 jugadores
 let currentPlayer = 0; // Índice del jugador actual (0, 1 o 2)
+const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜ'; // Alfabeto en mayúsculas
 const vocales = new Set(['A','Á', 'E','É', 'I','Í', 'O','Ó', 'U','Ú','Ü']);
 CargaDefault();
 function CargaDefault(){
@@ -288,7 +289,6 @@ function LimpiarResultado(){
 }
 
 function RevelarPanel(){
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜ'; // Alfabeto en mayúsculas
 
     // Agregar cada letra al Set
     for (let letter of alphabet) {
