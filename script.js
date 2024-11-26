@@ -30,6 +30,8 @@ let scores = [0, 0, 0]; // Puntuaciones de los 3 jugadores
 let currentPlayer = 0; // Índice del jugador actual (0, 1 o 2)
 const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜ'; // Alfabeto en mayúsculas
 const vocales = new Set(['A','Á', 'E','É', 'I','Í', 'O','Ó', 'U','Ú','Ü']);
+
+let jungando = false;
 CargaDefault();
 function CargaDefault(){
     title="Selecciona un panel para jugar";
@@ -42,6 +44,11 @@ function CargaDefault(){
     //updateAlphabetPanel();
 
 }
+
+
+nombreJugador1Input.addEventListener('blur', cargaNombres); 
+nombreJugador2Input.addEventListener('blur', cargaNombres); 
+nombreJugador3Input.addEventListener('blur', cargaNombres);
 
 loadBtn.addEventListener('click', () => {
     const file = fileInput.files[0];
@@ -56,6 +63,7 @@ loadBtn.addEventListener('click', () => {
             title=titulo[0];
             updatePanel();
             updateAlphabetPanel();
+            jungando=true;
         };
         reader.readAsText(file);
 
@@ -80,6 +88,7 @@ function reincia(){
     scores = [0, 0, 0]; // Puntuaciones de los 3 jugadores
     currentPlayer = 0; // Índice del jugador actual (0, 1 o 2)
     updateScores();
+    jungando=false;
     highlightCurrentPlayer();
 }
 function cargaNombres() {
@@ -87,10 +96,11 @@ function cargaNombres() {
     var nombreJugador2 = nombreJugador2Input.value !== "" ? nombreJugador2Input.value : "Jugador 2";
     var nombreJugador3 = nombreJugador3Input.value !== "" ? nombreJugador3Input.value : "Jugador 3";
 
-    document.getElementById("player-1").innerHTML = nombreJugador1 + "<br><hr> <span id='score-0'>0</span>";
-    document.getElementById("player-2").innerHTML = nombreJugador2 + "<br><hr> <span id='score-1'>0</span>";
-    document.getElementById("player-3").innerHTML = nombreJugador3 + "<br><hr> <span id='score-2'>0</span>";
-    toggleUploadSymbol.click();
+    document.getElementById("player-1").innerHTML = nombreJugador1 + "<br><hr> <span id='score-0'>"+scores[0]+"</span>";
+    document.getElementById("player-2").innerHTML = nombreJugador2 + "<br><hr> <span id='score-1'>"+scores[1]+"</span>";
+    document.getElementById("player-3").innerHTML = nombreJugador3 + "<br><hr> <span id='score-2'>"+scores[2]+"</span>";
+    if(jungando)
+        toggleUploadSymbol.click();
 }
 
 function updatePanel() {
@@ -380,7 +390,15 @@ playerSelect.addEventListener('change', (event) => {
 });
 
 function sumar(){
+
     const inputValue = parseFloat(resultado.value);
+    if (isNaN(inputValue)) {
+        // Resaltar el input si no es un número
+        resultado.classList.add('error'); // Asegúrate de tener una clase CSS para resaltar
+        resultado.classList.add('vibrar');
+        alert("Por favor, ingresa un número válido.");
+        return; // Salir de la función si el valor no es válido
+    } 
     scores[currentPlayer]+=inputValue;
     LimpiarResultado();
     updateScores();
@@ -388,6 +406,13 @@ function sumar(){
 
 function restar(){
     const inputValue = parseFloat(resultado.value);
+    if (isNaN(inputValue)) {
+        // Resaltar el input si no es un número
+        resultado.classList.add('error'); // Asegúrate de tener una clase CSS para resaltar
+        resultado.classList.add('vibrar');
+        alert("Por favor, ingresa un número válido.");
+        return; // Salir de la función si el valor no es válido
+    } 
     scores[currentPlayer]-=inputValue;
     LimpiarResultado();
     updateScores();
