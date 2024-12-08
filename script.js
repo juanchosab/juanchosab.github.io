@@ -273,7 +273,7 @@ function updateScores() {
 function cambiaSiguienteJugador(){
     currentPlayer = (currentPlayer + 1) % 3;
     highlightCurrentPlayer();
-    playSonidoCorrect();
+    playSonidoFail();
 }
 
 toggleUploadSymbol.addEventListener('click', () => {
