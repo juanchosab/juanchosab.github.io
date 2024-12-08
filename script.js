@@ -273,6 +273,7 @@ function updateScores() {
 function cambiaSiguienteJugador(){
     currentPlayer = (currentPlayer + 1) % 3;
     highlightCurrentPlayer();
+    playSonidoCorrect();
 }
 
 toggleUploadSymbol.addEventListener('click', () => {
@@ -287,12 +288,12 @@ toggleUploadSymbol.addEventListener('click', () => {
 
 pierdeTurnoButton.addEventListener('click', () => {
     cambiaSiguienteJugador();
-    playSonidoFail();
+
 });
 quiebraButton.addEventListener('click', () => {
     Quiebra();
     cambiaSiguienteJugador();
-    playSonidoFail();
+
 });
 
 revelarPanelButton.addEventListener('click', () => {
