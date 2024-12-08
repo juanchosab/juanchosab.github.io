@@ -15,6 +15,9 @@ const nombreJugador2Input = document.getElementById('nombre-jugador2');
 const nombreJugador3Input = document.getElementById('nombre-jugador3');
 const valorVocales =50;
 
+const sonidoFail = document.getElementById("sonidoFail");
+const sonidoCorrect = document.getElementById("sonidoCorrect");
+
 let nombreJugador1="Jugador 1";
 let nombreJugador2="Jugador 2";
 let nombreJugador3="Jugador 3";
@@ -57,10 +60,15 @@ loadBtn.addEventListener('click', () => {
         const reader = new FileReader();
         reader.onload = (e) => {
             const content = e.target.result;
-            lettersArray = content.split('\n').map(line => line.split(',').map(letter => letter.trim().replace(/'/g, '')));
+            lettersArray = content.split('\n').map(line => 
+                line.split(',').map(letter => 
+                    letter.trim().replace(/'/g, '').replace(/;/g, ',') // Reemplaza ';' por ','
+                )
+            );
             const [titulo, ...letras] = lettersArray;
             letters=letras;
             title=titulo[0];
+
             updatePanel();
             updateAlphabetPanel();
             jungando=true;
@@ -85,6 +93,7 @@ function reincia(){
     revealedLetters.add('¿');
     revealedLetters.add('.');
     revealedLetters.add('-');
+    revealedLetters.add(',');
     scores = [0, 0, 0]; // Puntuaciones de los 3 jugadores
     currentPlayer = 0; // Índice del jugador actual (0, 1 o 2)
     updateScores();
@@ -224,7 +233,7 @@ function selectLetterFromAlphabet(letter, letterDiv) {
             // Calcular la puntuación multiplicando el valor del input por letterCount
                 scores[currentPlayer] += inputValue * letterCount; 
             }
-            
+            playSonidoCorrect();
         }
         LimpiarResultado();
     }
@@ -278,10 +287,12 @@ toggleUploadSymbol.addEventListener('click', () => {
 
 pierdeTurnoButton.addEventListener('click', () => {
     cambiaSiguienteJugador();
+    playSonidoFail();
 });
 quiebraButton.addEventListener('click', () => {
     Quiebra();
     cambiaSiguienteJugador();
+    playSonidoFail();
 });
 
 revelarPanelButton.addEventListener('click', () => {
@@ -430,4 +441,14 @@ function multiplicar(){
     scores[currentPlayer]=res;
     LimpiarResultado();
     updateScores();
+}
+
+function playSonidoFail(){
+    sonidoFail.currentTime = 0; // Reinicia el sonido
+    sonidoFail.play();
+}
+
+function playSonidoCorrect(){
+    sonidoCorrect.currentTime = 0; // Reinicia el sonido
+    sonidoCorrect.play();
 }
