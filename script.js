@@ -204,31 +204,40 @@ function selectLetterFromAlphabet(letter, letterDiv) {
         revealedLetters.add(letter); // Revelar la letra en el panel
         
         // Contar las repeticiones de la letra en el panel
-        const letterCount = countLetter(letter, letters);
+        let letterCount = countLetter(letter, letters);
+        if(vocales.has(letter)){
+            switch(letter){
+                case 'A':
+                    letterCount += countLetter('Á', letters);
+                    revealedLetters.add('Á');
+                    break;
+                case 'E':
+                    letterCount += countLetter('É', letters);
+                    revealedLetters.add('É');
+                    break;
+                case 'I':
+                    letterCount += countLetter('Í', letters);
+                    revealedLetters.add('Í');
+                    break;
+                case 'O':
+                    letterCount += countLetter('Ó', letters);
+                    revealedLetters.add('Ó');
+                    break;
+                case 'U':
+                    letterCount += countLetter('Ú', letters);
+                    revealedLetters.add('Ú');
+                    letterCount += countLetter('Ü', letters);
+                    revealedLetters.add('Ü');
+                    break;
+            }
+        }
+
         if (letterCount === 0) {
             cambiaSiguienteJugador();
             
         } else {
             if(vocales.has(letter)){
                 scores[currentPlayer] -= valorVocales;
-                switch(letter){
-                    case 'A':
-                        revealedLetters.add('Á');
-                        break;
-                    case 'E':
-                        revealedLetters.add('É');
-                        break;
-                    case 'I':
-                        revealedLetters.add('Í');
-                        break;
-                    case 'O':
-                        revealedLetters.add('Ó');
-                        break;
-                    case 'U':
-                        revealedLetters.add('Ú');
-                        revealedLetters.add('Ü');
-                        break;
-                }
             }else{
             // Calcular la puntuación multiplicando el valor del input por letterCount
                 scores[currentPlayer] += inputValue * letterCount; 
